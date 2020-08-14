@@ -1,13 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import { NavigationContainer } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack"
+
+import LoginScreen from './Screens/Login'
+import LoginPhoneScreen from './Screens/LoginPhoneScreen'
+import SignupScreen from './Screens/Signup'
+import HomeScreen from './Screens/Home'
+import OrderSummaryScreen from './Screens/OrderSummary'
+import OrderPickupScreen from './Screens/OrderPickup'
+import OrderHistoryScreen from './Screens/OrderHistory'
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title:"Login"}}/>
+        <Stack.Screen name="LoginPhoneScreen" component={LoginPhoneScreen} options={{title:"Login with Phone"}}/>
+        <Stack.Screen name="SignupScreen" component={SignupScreen} options={{title:"Register"}}/>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title:"Meals"}}/>
+        <Stack.Screen name="OrderSummaryScreen" component={OrderSummaryScreen} options={{title:"Order Summary"}}/>
+        <Stack.Screen name="OrderPickupScreen" component={OrderPickupScreen} options={{title:"Order Pickup"}}/>
+        <Stack.Screen name="OrderHistoryScreen" component={OrderHistoryScreen} options={{title:"Past Orders"}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

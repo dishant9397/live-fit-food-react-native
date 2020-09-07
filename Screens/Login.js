@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
 
 export default function App({navigation}) {
 
@@ -12,7 +13,9 @@ export default function App({navigation}) {
   const loginButtonClicked = () => {
     firebase.auth().signInWithEmailAndPassword(getEmail, getPassword)
     .then(() => {
-        navigation.navigate("HomeScreen", {email: getEmail})
+      navigation.navigate("HomeScreen", {email: getEmail})
+      setEmail("")
+      setPassword("")
     })
     .catch(() => {
         alert("Please check the login details!")

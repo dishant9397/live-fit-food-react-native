@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
+import firebase from "firebase"
 
 import LoginScreen from './Screens/Login'
 import LoginPhoneScreen from './Screens/LoginPhoneScreen'
@@ -12,10 +13,12 @@ import HomeScreen from './Screens/Home'
 import OrderSummaryScreen from './Screens/OrderSummary'
 import OrderPickupScreen from './Screens/OrderPickup'
 import OrderHistoryScreen from './Screens/OrderHistory'
+import { firebaseConfig } from './FirebaseConfig';
 
 const Stack = createStackNavigator()
 
 export default function App() {
+  firebase.initializeApp(firebaseConfig)
   return (
     <NavigationContainer>
       <Stack.Navigator>

@@ -13,6 +13,8 @@ export default function App({navigation}) {
         firebase.auth().createUserWithEmailAndPassword(getEmail, getPassword)
         .then(() => {
             navigation.navigate("LoginScreen")
+            setEmail("")
+            setPassword("")
         })
         .catch(() => {
             alert("Error creating user; please try after sometime")

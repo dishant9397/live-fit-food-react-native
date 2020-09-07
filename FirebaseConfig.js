@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-const config = {
+export const firebaseConfig = {
     apiKey: "AIzaSyAixSZZcvKI-OPXkSK8pQYA3jJ3a72kUBk",
     authDomain: "finalproject-842af.firebaseapp.com",
     databaseURL: "https://finalproject-842af.firebaseio.com",
@@ -11,7 +11,4 @@ const config = {
     measurementId: "G-2RPBL4QD29"
   };
 
-  firebase.initializeApp(config);
 
-  const database = firebase.firestore()
-  export default database;

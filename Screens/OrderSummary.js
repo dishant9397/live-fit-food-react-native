@@ -39,6 +39,10 @@ export default function App({ route, navigation }) {
     setTipIndex(selectedIndex)
   }
 
+  const navigateToOrderPickup = () => {
+    navigation.push("OrderPickupScreen", {email:email, total:getTotal.toFixed(2), orderNumber:getRandomNumber})
+  }
+
   useEffect(() => {
     generateRandomNumber()
   },[])
@@ -48,6 +52,7 @@ export default function App({ route, navigation }) {
       <Text style={styles.orderDetail}> Order Receipt</Text>
       <Text style={styles.orderNumber}>Order Number: {getRandomNumber}</Text>
       <Text style={styles.details}>Meal Name: {meal.mealName}</Text>
+      <Text style={styles.details}>Description: {meal.mealDescription}</Text>
       <Text style={styles.details}>Price: ${meal.mealPrice}</Text>
       <Text style={styles.details}>Tax: ${(meal.mealPrice * 0.13).toFixed(2)}</Text>
       <View style={{flexDirection:'row'}}>
@@ -69,7 +74,7 @@ export default function App({ route, navigation }) {
       <Text style={styles.totalAmount}>Total: ${getTotal.toFixed(2)}</Text>
       <Button 
         title="Pickup Order" 
-        onPress={() => {navigation.push("OrderPickupScreen")}}
+        onPress={navigateToOrderPickup}
       ></Button>
     </View>
   )
